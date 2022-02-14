@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "name": "crm",
+        "izoh": "for education",
+        "group": "n10"
+    },
+    {
+        "id": 2,
+        "name": "postgersql so'rovlar",
+        "izoh": "so'rovlar yozib kelish",
+        "group": "n11"
+    },
+    {
+        "id": 3,
+        "name": "telegram bot",
+        "izoh": "for translate",
+        "group": "n12"
+    },
+    {
+        "id": 4,
+        "izoh": "youtube Api",
+        "group": "n10",
+        "teacher": "teacher2"
+    },
+    {
+        "id": 5,
+        "name": "telegram",
+        "group": "n11",
+        "teacher": "teacher2"
+    },
+    {
+        "id": 6,
+        "name": "chat",
+        "izoh": "aplication",
+        "group": "n11",
+        "teacher": "teacher2"
+    },
+    {
+        "id": 7,
+        "name": "pokemon",
+        "izoh": "Api",
+        "group": "n11",
+        "teacher": "teacher2"
+    },
+    {
+        "id": 8,
+        "name": "watching",
+        "izoh": "videoni ko'rib kelish",
+        "group": "n10",
+        "teacher": "teacher1"
+    }
+]

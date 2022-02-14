@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/styles/admin.css">
+  <title>Admin page</title>
+</head>
+<body class="bg-light">
+  <header class="container">
+        <button class="btn btn-primary addEvent" type="button" data-bs-toggle="offcanvas" data-bs-target="#teacher" aria-controls="teacher"
+             >Add students</button>
+</header>
+<main class="container">
+   
+    <div class="left">
+        <ul class="left-list list-unstyled">
+            <li>
+                <button class="btn btn-outline-success mt-3 course btn-before">Courses</button>
+            </li>
+            <li>
+                <button class="btn btn-outline-success mt-3 teacher ">Teachers</button>
+            </li>
+            <li>
+                <button class="btn btn-outline-success mt-3 group">Groups</button>
+            </li>
+            <li>
+                <button class="btn btn-outline-success mt-3 student">Students</button>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div>
+
+            <div class="offcanvas offcanvas-end" id="teacher" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form action="/admin" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Name</label>
+                            <input name="username" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required placeholder="Ism">
+                        </div>
+                        <input class="disabled" name="role" type="text"  value="teacher">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">password</label>
+                            <input name="password" type="number" class="form-control" id="exampleInputPassword1" required
+                                placeholder="password">
+                        </div>
+                        <select name="course" class="form-select" aria-label="Default select example">
+                            <option selected disabled hidden>Courses</option>
+                            <%
+                            for (let courses of allCourses ) { %>
+                                <option value="<%= courses.course %>"><%= courses.course %></option>
+                            <% } %>
+                        </select>
+                        <button type="submit" class="btn btn-info mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="offcanvas offcanvas-end"  id="student" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form action="/admin" method="post" enctype="application/x-www-form-urlencoded">
+                        <h2>student</h2>
+                        <div class="mb-3">
+                            <input class="disabled" name="role" type="text"  value="student">
+                            <label for="exampleInputEmail1" class="form-label">Name</label>
+                            <input type="text" name="username" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required placeholder="Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">password</label>
+                            <input name="password" type="number" class="form-control" id="exampleInputPassword1" required
+                                placeholder="password">
+                        </div>
+                        <h6 class="mt-3">Course</h6>
+                        <select name="course" class="form-select">
+                            <option selected hidden>Courses</option>
+                            <%
+                            for (let courses of allCourses ) { %>
+                                <option value="<%= courses.course %>"><%= courses.course %></option>
+                            <% } %>
+                        </select>
+                        <h6 class="mt-3">Teacher</h6>
+                        <select name="teacher" class="form-select">
+                            <option selected hidden>Teachers</option>
+                            <%
+                            foundTeacher.map((teacher) => {%>
+                                <option value="<%= teacher.username %>"> <%= teacher.username%> </option>
+                            <% }) %>
+                        </select>
+                        <h6 class="mt-3">Group</h6>
+                        <select name="group" class="form-select >
+                            <option selected hidden>group</option>
+                            <%
+                            allGroups.map(g => { %>
+                                <option value="<%= g.group %>"><%= g.group %>  </option>
+                            <% }) %>
+                        </select>
+                        <button type="submit" class="btn btn-info mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="course" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form action="/admin" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="mb-3">
+                            <input class="disabled" name="role" type="text"  value="course">
+                            <label for="exampleInputEmail1" class="form-label">Course title</label>
+                            <input name="course" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required placeholder="Title">
+                        </div>
+                        <select name="teacher" class="form-select mt-3" >
+                            <option selected>Teachers</option>
+                            <%
+                             foundTeacher.map(teacher => { %>
+                                <option value="<%= teacher.username %>"><%= teacher.username %> 
+                                </option>
+                            <% }) %>
+                        </select>
+                        <button type="submit" class="btn btn-info mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="group" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form action="/admin" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="mb-3">
+                            <input class="disabled" name="role" type="text"  value="group">
+                            <label for="exampleInputEmail1" class="form-label">Group name</label>
+                            <input name="group" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required placeholder="Group title">
+                        </div>
+                        <select name="course" class="form-select mt-3" aria-label="Default select example">
+                            <option selected>Courses</option>
+                            <%
+                            allCourses.map(cours => { %>
+                                <option value="<%= cours.course %>"><%= cours.course %></option>
+                            <% }) %>
+                        </select>
+                        <select name="teacher" class="form-select mt-3" aria-label="Default select example">
+                            <option selected hidden disabled>Teachers</option>
+                            <%
+                              foundTeacher.map(teacher => { %>
+                                <option value="<%= teacher.username %>"><%= teacher.username %> </option>
+                            <% }) %>
+                        </select>
+                        <button type="submit" class="btn btn-info mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+       <div class="table_wrap">
+        <table class="table table-teacher show">
+
+            <thead>
+                <tr>
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Course
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%const users = allUsers.filter(e => e.role == 'teacher') 
+                      users.map(user => { %>
+                <tr>    
+                    <td><%= user.id %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.course %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <table class="table table-student">
+
+            <thead>
+                <tr>
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Course
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%const students = allUsers.filter(e => e.role == 'student') 
+                   students.map(user => { %>
+                <tr>    
+                    <td><%= user.id %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.course %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <table class="table table-group">
+
+            <thead>
+                <tr>
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Course
+                    </th>
+                    <th>
+                        Teachers
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    allGroups.map(groupe => { %>
+                <tr>    
+                    <td><%= groupe.id %></td>
+                    <td><%= groupe.group %></td>
+                    <td><%= groupe.course %></td>
+                    <td><%= groupe.teacher %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <table class="table table-cours">
+
+            <thead>
+                <tr>
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Teacher
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                       allCourses.map( cours => { %>
+                <tr>    
+                    <td><%= cours.id %></td>
+                    <td><%= cours.course%></td>
+                    <td><%= cours.teacher%></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+       </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

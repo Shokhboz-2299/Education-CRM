@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "group": "n10",
+        "course": "web development",
+        "teacher": "teacher1"
+    },
+    {
+        "id": 2,
+        "group": "n10",
+        "course": "web development",
+        "teacher": "teacher1"
+    },
+    {
+        "id": 3,
+        "group": "n11",
+        "course": "mobile development",
+        "teacher": "teacher2"
+    },
+    {
+        "id": 4,
+        "group": "n14",
+        "course": "web",
+        "teacher": "Teachers"
+    }
+]

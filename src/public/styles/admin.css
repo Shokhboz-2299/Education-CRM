@@ -1,0 +1,44 @@
+
+header{
+  margin-top: 20px;
+  text-align: right;
+}
+
+button{
+  width: 200px;
+}
+main{
+  display: flex;
+}
+.left{
+  padding: 20px;
+  width: 20%;
+  height: 80vh;
+  border-right: 1px solid #000;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+}
+.table-teacher{
+  display: none;
+}
+.table-student{
+  display: none;
+}
+.table-group{
+  display: none;
+}
+.table-cours{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+th{
+  width: 250px;
+}
+.disabled{
+  display: none !important;
+}

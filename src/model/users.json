@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "username": "Shokhboz",
+        "password": "root",
+        "role": "admin"
+    },
+    {
+        "id": 2,
+        "username": "teacher1",
+        "password": "t",
+        "role": "teacher",
+        "course": "web development"
+    },
+    {
+        "id": 3,
+        "username": "teacher2",
+        "password": "t2",
+        "role": "teacher",
+        "course": "mobile development"
+    },
+    {
+        "id": 4,
+        "username": "student1",
+        "password": "s",
+        "role": "student",
+        "course": "mobile development",
+        "teacher": "teacher2",
+        "group": "n10"
+    },
+    {
+        "id": 5,
+        "username": "student2",
+        "password": "s2",
+        "role": "student",
+        "course": "web development",
+        "teacher": "teacher1",
+        "group": "n11"
+    },
+    {
+        "id": 6,
+        "username": "shokhboz",
+        "role": "teacher",
+        "password": "4",
+        "course": "web"
+    },
+    {
+        "id": 7,
+        "username": "Nurzida",
+        "role": "teacher",
+        "password": "1",
+        "course": "web development"
+    },
+    {
+        "id": 8,
+        "username": "New",
+        "role": "student",
+        "password": "33",
+        "course": "web development",
+        "teacher": "teacher1",
+        "group": "n10"
+    },
+    {
+        "id": 9,
+        "username": "Jamol",
+        "role": "teacher",
+        "password": "22",
+        "course": "web"
+    },
+    {
+        "id": 10,
+        "username": "Qobil",
+        "role": "student",
+        "password": "23",
+        "course": "web",
+        "teacher": "teacher2",
+        "group": "n14"
+    },
+    {
+        "id": 11,
+        "username": "Jamon",
+        "role": "teacher",
+        "password": "21",
+        "course": "mobile development"
+    }
+]

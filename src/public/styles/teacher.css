@@ -1,0 +1,26 @@
+
+.left{
+  padding: 20px;
+  width: 20%;
+  height: 80vh;
+}
+
+.wrapper{
+  display: flex;
+}
+th{
+  width: 250px;
+}
+.table-student{
+  display: none;
+}
+.table-group{
+  display: none;
+}
+.table-homework{
+  display: none;
+}
+
+.show{
+  display: block;
+}
